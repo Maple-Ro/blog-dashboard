@@ -13,11 +13,5 @@
         "transform-runtime"
       ]
     }
-  },
-  "proxy": {
-    "/api": {
-      "target": "http://liutsing.io/",
-      "changeOrigin": true
-    }
   }
 }

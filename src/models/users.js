@@ -13,29 +13,31 @@ export default {
   },
   effects: {
     *fetch({ payload: { page=1 } }, { call, put }) {
-      const { data, headers } = yield call(usersService.fetch, { page });
+      const { data } = yield call(usersService.fetch, { page });
       yield put({
         type: 'save',
         payload: {
-          data,
-          total: parseInt(headers['x-total-count'], 10),
+          data:data.data,
+          total: parseInt(data.total, 10),
           page: parseInt(page, 10),
         },
       });
+
     },
-    *del({payload:{id}}, {call, put}){
+    *del({payload:id}, {call, put}){
+      console.log(id);
       yield call(usersService.del, id);
       yield put({type:'reload'});
     },
     *reload(action, {put,select}){
-      const page=yield select(state=>state.user.page);
+      const page=yield select(state=>state.users.page);
       yield put({type:'fetch', payload:{page}});
     },
-    *patch({payload:{id,values}}, {call, put,select}){
-      yield call(usersService.patch, id, values);
-      const page = yield select(state=>state.user.page);
-      yield put({type:'fetch', payload:{page}});
-    },
+    // *patch({payload:{id,values}}, {call, put,select}){
+    //   yield call(usersService.patch, id, values);
+    //   const page = yield select(state=>state.users.page);
+    //   yield put({type:'fetch', payload:{page}});
+    // },
   },
   subscriptions: {
     setup({ dispatch, history }) {

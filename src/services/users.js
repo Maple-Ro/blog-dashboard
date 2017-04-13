@@ -1,21 +1,22 @@
 import request from '../utils/request';
-import { PAGE_SIZE } from '../constants';
+// import {get} from '../utils/request2';
+import { PAGE_SIZE, API_URL } from '../constants';
 export function fetch({ page = 1 }) {
-  return request(`/api/users?_page=${page}&_limit=${PAGE_SIZE}`);
+  return request(`${API_URL}/fetchReactDemo?_page=${page}&_limit=${PAGE_SIZE}`);
 }
 export function del(id) {
-  return request(`/delReactDemo/${id}`,{
-    method:'DELETE',
+  return request(`${API_URL}/delReactDemo/${id}`,{
+    method:'GET',
   });
 }
 export function patch(id, values) {
-  return request(`/editReactDemo/${id}`, {
+  return request(`${API_URL}/editReactDemo/${id}`, {
     method:'POST',
     body:JSON.stringify(values)
   });
 }
 export function create(values) {
-  return request(`createReactDemo/`, {
+  return request(`${API_URL}/createReactDemo/`, {
     method:'POST',
     body:JSON.stringify(values)
   });
