@@ -23,6 +23,19 @@ export default {
         },
       });
     },
+    *del({payload:{id}}, {call, put}){
+      yield call(usersService.del, id);
+      yield put({type:'reload'});
+    },
+    *reload(action, {put,select}){
+      const page=yield select(state=>state.user.page);
+      yield put({type:'fetch', payload:{page}});
+    },
+    *patch({payload:{id,values}}, {call, put,select}){
+      yield call(usersService.patch, id, values);
+      const page = yield select(state=>state.user.page);
+      yield put({type:'fetch', payload:{page}});
+    },
   },
   subscriptions: {
     setup({ dispatch, history }) {

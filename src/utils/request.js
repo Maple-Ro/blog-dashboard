@@ -33,9 +33,4 @@ export default async function request(url, options) {
     ret.headers['x-total-count'] = response.headers.get('x-total-count');
   }
   return ret;
-  // return fetch(url, options)
-  //   .then(checkStatus)
-  //   .then(parseJSON)
-  //   .then(data => ({ data }))
-  //   .catch(err => ({ err }));
 }
