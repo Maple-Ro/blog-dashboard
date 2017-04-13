@@ -9,15 +9,22 @@ export function del(id) {
     method:'GET',
   });
 }
-export function patch(id, values) {
-  return request(`${API_URL}/editReactDemo/${id}`, {
+export function edit(id, values) {
+  const res =  request(`${API_URL}/editReactDemo/${id}`, {
     method:'POST',
+    header:{
+      'X-CSRF-TOKEN':'Z7mU4q25MqMxxN33xfBdctbDefCnPXlkYjFE5clI'
+    },
     body:JSON.stringify(values)
   });
+  console.log(res);
 }
 export function create(values) {
   return request(`${API_URL}/createReactDemo/`, {
     method:'POST',
+    header:{
+      'X-CSRF-TOKEN':'Z7mU4q25MqMxxN33xfBdctbDefCnPXlkYjFE5clI'
+    },
     body:JSON.stringify(values)
   });
 }

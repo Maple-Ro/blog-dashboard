@@ -44,7 +44,7 @@ class UserEditModal extends Component {
       <span>
         <span onClick={this.showModalHandler}>{children}</span>
         <Modal
-          title="Editi User"
+          title="Edit User"
           visible={this.state.visible}
           onOk={this.okHandler}
           onCancel={this.hideModalHandler}
