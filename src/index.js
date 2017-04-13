@@ -5,19 +5,12 @@ import router from "./router";
 // 1. Initialize
 const app = dva();
 
-const cached = {};
-function registerModel(app, model) {
-  if (!cached[model.namespace]) {
-    app.model(model);
-    cached[model.namespace] = 1;
-  }
-}
-
 // 2. Plugins
 // app.use({});
 
 // 3. Model
-registerModel(app, Users);
+// registerModel(app, Users);
+//move to route.js
 // 4. Router
 app.router(router);
 
