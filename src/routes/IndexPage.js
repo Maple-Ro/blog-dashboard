@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'dva';
 import MainLayout from '../components/MainLayout/MainLayout';
 import styles from './IndexPage.css';
+import propTypes from 'prop-types';
 
 function IndexPage({location}) {
   return (

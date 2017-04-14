@@ -25,7 +25,6 @@ export default {
 
     },
     *del({payload:id}, {call, put}){
-      console.log(id);
       yield call(usersService.del, id);
       yield put({type:'reload'});
     },
@@ -33,11 +32,9 @@ export default {
       const page=yield select(state=>state.users.page);
       yield put({type:'fetch', payload:{page}});
     },
-    *patch({payload:{id,values}}, {call, put,select}){
-     const response = yield call(usersService.edit, id, values);
-     console.log(response);
-      const page = yield select(state=>state.users.page);
-      yield put({type:'fetch', payload:{page}});
+    *patch({payload:{id,values}}, {call, put}){
+      yield call(usersService.patch, id, values);
+      yield put({type:'reload'});
     },
   },
   subscriptions: {
