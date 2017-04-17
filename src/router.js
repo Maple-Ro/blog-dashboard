@@ -15,19 +15,19 @@ function RouterConfig({history, app}) {
     {
       path: '/',
       name: 'IndexPage',
-      getComponent(nextState, cb){
+      getComponent(nextState, callback){
         require.ensure([], (require) => {
-          cb(null, IndexPage);
+          callback(null, IndexPage);
         });
       },
     },
     {
       path: '/users',
       name: 'UserPage',
-      getComponent(nextState, cb){
+      getComponent(nextState, callback){
         require.ensure([], (require) => {
           registerModel(app, require('./models/users'));
-          cb(null, UserPage);
+          callback(null, UserPage);
         });
       },
     },
