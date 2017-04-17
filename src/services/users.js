@@ -1,20 +1,18 @@
-import request from '../utils/request';
+import request from "../utils/request";
 // import {get} from '../utils/request2';
-import { PAGE_SIZE, API_URL } from '../constants';
+import {API_URL, PAGE_SIZE} from "../constants";
 function postConfig(values) {
   return {
-    method:'POST',
-    mode:'cors',
-    body:JSON.stringify(values)
+    method: 'POST',
+    mode: 'cors',
+    body: JSON.stringify(values)
   }
 }
-export function fetch({ page = 1 }) {
+export function fetch({page = 1}) {
   return request(`${API_URL}/fetchReactDemo?_page=${page}&_limit=${PAGE_SIZE}`);
 }
 export function del(id) {
-  return request(`${API_URL}/delReactDemo/${id}`,{
-    method:'GET',
-  });
+  return request(`${API_URL}/delReactDemo`, postConfig(id));
 }
 /**
  * mode: 是否跨域
