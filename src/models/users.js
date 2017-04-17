@@ -36,6 +36,10 @@ export default {
       yield call(usersService.patch, id, values);
       yield put({type:'reload'});
     },
+    *create({payload:values},{call, put}){
+      yield call(usersService.create, values);
+      yield put({type:'reload'})
+    }
   },
   subscriptions: {
     setup({ dispatch, history }) {

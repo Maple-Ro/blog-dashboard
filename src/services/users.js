@@ -26,5 +26,5 @@ export function patch(id, values) {
   return request(`${API_URL}/editReactDemo/${id}`, postConfig(values));
 }
 export function create(values) {
-  return request(`${API_URL}/createReactDemo/`, postConfig(values));
+  return request(`${API_URL}/createReactDemo`, postConfig(values));
 }

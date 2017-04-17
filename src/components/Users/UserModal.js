@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {Form, Modal, Input} from "antd";
 const FormItem = Form.Item;
-class UserEditModal extends Component {
+class UserModal extends Component {
   constructor(pros) {
     super(pros);
     this.state = {
@@ -35,6 +35,7 @@ class UserEditModal extends Component {
     const {children} = this.props;
     const {getFieldDecorator} = this.props.form;
     const {name, email, website} = this.props.record;
+    const title = this.props.title;
     const formItemLayout = {
       labelCol: {span: 6},
       wrapperCol: {span: 14},
@@ -44,7 +45,7 @@ class UserEditModal extends Component {
       <span>
         <span onClick={this.showModalHandler}>{children}</span>
         <Modal
-          title="Edit User"
+          title={title}
           visible={this.state.visible}
           onOk={this.okHandler}
           onCancel={this.hideModalHandler}
@@ -86,4 +87,4 @@ class UserEditModal extends Component {
     );
   }
 }
-export default Form.create()(UserEditModal);
+export default Form.create()(UserModal);
